@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+void MergeSortedArray(int *str1, int *str2, int sizeofstr1, int sizeofstr2)
+{
+    int *str = new int[sizeofstr1 + sizeofstr2];
+    int index = 0, index1 = 0, index2 = 0;
+    while(index1 < sizeofstr1 || index2 < sizeofstr2)
+    {
+        if (index1 == sizeofstr1)
+        {
+            str[index] = str2[index2];
+            index++;
+            index2++;
+            continue;
+        }
+        if (index2 == sizeofstr2)
+        {
+            str[index] = str1[index1];
+            index++;
+            index1++;
+            continue;
+        }
+        if(str1[index1] > str2[index2])
+        {
+            str[index] = str2[index2];
+            index++;
+            index2++;
+        }
+        else 
+        {
+            str[index] = str1[index1];
+            index++;
+            index1++;
+        }
+    }
+    
+    for (int i = 0; i < (sizeofstr1 + sizeofstr2); i++)
+        cout << str[i] << ' ';
+}
+
+int main() {
+    
+    int str1[] = {0, 3, 4, 31};
+    int str2[] = {4, 6, 30};
+  
+    int sizeofstr1 = sizeof(str1)/sizeof(str1[0]);
+    int sizeofstr2 = sizeof(str2)/sizeof(str2[0]);
+    
+    MergeSortedArray(str1, str2, sizeofstr1, sizeofstr2);
+    
+    return 0;
+}
