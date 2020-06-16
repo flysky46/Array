@@ -1,4 +1,4 @@
-    void rotate(vector<int>& nums, int k) {
+    void rotate1(vector<int>& nums, int k) {
         vector<int> RotatedArray;
         int VectorSize = nums.size();
         if(k > VectorSize)
@@ -12,4 +12,15 @@
         }
         nums = RotatedArray;
         return;
+    }
+
+
+    void rotate2(vector<int>& nums, int k) {
+        vector<int> RotatedArray;
+        int VectorSize = nums.size();
+        if(k > VectorSize)
+            return;
+        reverse(nums.begin(), nums.end());
+        reverse(nums.begin(), nums.begin() + k);
+        reverse(nums.begin() + k, nums.end());
     }
