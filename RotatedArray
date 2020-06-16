@@ -1,0 +1,15 @@
+    void rotate(vector<int>& nums, int k) {
+        vector<int> RotatedArray;
+        int VectorSize = nums.size();
+        if(k > VectorSize)
+            return;
+        for(int i = 0; i < VectorSize; i++)
+        {
+            if(i < k)
+                RotatedArray.push_back(nums[VectorSize + i - k]);
+            else
+                RotatedArray.push_back(nums[i - k]);
+        }
+        nums = RotatedArray;
+        return;
+    }
